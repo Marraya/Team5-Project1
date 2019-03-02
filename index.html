@@ -20,6 +20,10 @@
 
     <!-- Theme CSS -->
     <link rel="stylesheet" href="./assets/css/theme.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./assets/css/custom.css">
+
 </head>
 
 <body>
@@ -94,7 +98,8 @@
                         <li class="nav-item mr-3">
                             <a href="#" target="_blank" class="nav-link d-lg-none"><span class="btn-inner--icon"><i
                                         class="fas fa-user-cog"></i></span>Bar Owner Login</a>
-                            <a href="#" target="_blank" class="btn btn-sm btn-primary btn-icon d-none d-lg-inline-flex">
+                            <a href="#" target="_blank" class="btn btn-sm btn-danger btn-icon d-none d-lg-inline-flex"
+                                data-toggle="modal" data-target="#modal_5">
                                 <span class="btn-inner--icon"><i class="fas fa-user-cog"></i></span>
                                 <span class="btn-inner--text">Bar Owner Login</span>
                             </a>
@@ -106,6 +111,97 @@
     </header>
 
     <main>
+
+        <!-- Modal -->
+        <div class="modal modal-danger fade" id="modal_5" tabindex="-1" role="dialog" aria-labelledby="modal_5"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="modal_title_6">Bar Owner // Firebase Auth Login</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" style="padding-top:0rem;padding-bottom:0rem">
+                        <div class="py-3 text-center">
+                            <p style="background: black; padding: 10px; box-shadow: 1px 1px 10px #00000050;border-radius:5px;margin-top:10px;">
+                                Server alert/error response can go here. <br />Remember no alerts or prompts allowed!
+                            </p>
+                            <div class="main-div" id="login_div">
+                                <form role="form">
+                                    <div class="form-group">
+                                        <label class="form-control-label text-white" style="float:left;">Email address</label>
+                                        <div class="input-group input-group-transparent">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" style="background:white"><i class="fas fa-user"></i></span>
+                                            </div>
+                                            <input type="email" class="form-control" id="input-email" placeholder="name@example.com">
+                                        </div>
+                                    </div>
+                                    <div class="form-group mb-4">
+                                        <div class="d-flex align-items-center justify-content-between">
+                                            <div>
+                                                <label class="form-control-label text-white">Password</label>
+                                            </div>
+                                            <div class="mb-2">
+                                                <a href="recover.html" class="small text-white text-unerline--dashed">Lost
+                                                    password?</a>
+                                            </div>
+                                        </div>
+                                        <div class="input-group input-group-transparent">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" style="background:white"><i class="fas fa-key"></i></span>
+                                            </div>
+                                            <input type="password" class="form-control" id="input-password" placeholder="Password">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" style="background:white">
+                                                    <i class="fas fa-eye"></i>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-center mb-3">
+                                        <button type="button" class="btn btn-block btn-primary" onclick="login()">Sign
+                                            in</button>
+                                    </div>
+                                </form>
+                            </div>
+
+                            <div id="user_div" class="loggedin-div" style="background: black; padding: 10px; box-shadow: 1px 1px 10px #00000050;border-radius:5px;margin-top:10px;">
+                                <h3 class="text-white">User Status: Logged In</h3>
+                                <p id="user_param">We could probably add date and time here?</p>
+                                <p>Additional Parameters:</p>
+
+                                <form role="form">
+                                    <div class="form-group">
+                                        <label class="form-control-label text-white" style="float:left;">Enter Bar ID</label>
+                                        <div class="input-group input-group-transparent">
+                                            <div class="input-group-prepend">
+                                                <span class="input-group-text" style="background:white"><i class="fas fa-beer"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control" id="input-text" placeholder="BARID000-23">
+                                        </div>
+                                        <label class="d-block" style="padding-top:20px">My Bar Is Super Hot Right Now</label>
+                                        <label class="toggle-switch">
+                                            <input type="checkbox">
+                                            <span class="toggle-switch-slider"></span>
+                                        </label>
+                                        <div style="padding-top:20px;">
+                                            <button type="button" class="btn btn-sm btn-secondary" id="input-bar-status">Update Bar Status</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal" onclick="logout()">Log
+                            Out</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <!-- Spotlight -->
         <section class="bg-darker">
@@ -205,7 +301,7 @@
             </div>
         </section>
 
-         <!-- Yelp Reviews Here -->
+        <!-- Yelp Reviews Here -->
 
         <section class="position-relative pb-sm pt-sm bg-secondary">
             <div class="bg-img-holder top-0 left-0 col-lg-6 zindex-100" data-bg-size="cover">
@@ -294,6 +390,13 @@
     <script src="./assets/js/yelp.js"></script>
     <script src="./assets/js/map-overlay.js"></script>
     <script src="./assets/js/map.js"></script>
+    <!-- Custom JS -->
+    <script src="./assets/js/custom.js"></script>
+    <!-- Firebase JS -->
+    <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
+    <!-- Login JS -->
+    <script src="./assets/js/login.js"></script>
+
 
 </body>
 
