@@ -17,11 +17,15 @@ firebase.auth().onAuthStateChanged(function(user) {
         if (user != null){
             var email_id = user.email;
             document.getElementById("user_param").innerHTML ="Current User: " + email_id;
+            $('#log-out').show();
         }
    
     } else {// if user is not login we show the user_div
-        document.getElementById("user_div").style.display = "none";
+        // document.getElementById("user_div").style.display = "none";
+        $('#user_div').hide(); // This does the same as above
+        $('#log-out').hide();
         document.getElementById("login_div").style.display = "block";
+        // $('#login_div').show(); **Gian you can use this too**
     }
   });
   
@@ -36,7 +40,8 @@ function login() {
         var errorCode = error.code;
         var errorMessage = error.message;
         // ...
-        window.alert("Error :" + errorMessage);
+        // window.alert("Error :" + errorMessage);
+        $('#server-error').text(errorMessage);
       });
 }
 function logout(){
