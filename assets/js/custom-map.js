@@ -1,10 +1,11 @@
 //Initialize Map
 
-$("#map-search").on("click",function(){
+// $("#map-search").on("click",function(){
 
-    parseInt($("#term-search").val().trim());
+//     var query = parseInt($("#term-search").val().trim());
+//     console.log(query)
 
-});
+// });
 
 function initMap(){
   // Empties Map div, grabs user input stores into a variable
