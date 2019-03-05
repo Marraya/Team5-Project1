@@ -16,6 +16,7 @@ firebase.auth().onAuthStateChanged(function(user) {
      
      var user = firebase.auth().currentUser;
         if (user != null){
+            console.log('use detail ', user)
             var email_id = user.email;
             document.getElementById("user_param").innerHTML ="Current User: " + email_id;
             $('#log-out').show();
