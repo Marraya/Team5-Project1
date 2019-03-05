@@ -11,7 +11,8 @@ firebase.initializeApp(config);
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {// if user is logged in we show the login_div
      document.getElementById("user_div").style.display = "block";
-     document.getElementById("login_div").style.display = "none";
+     // document.getElementById("login_div").style.display = "none";
+     $('#login_div').hide();
      
      var user = firebase.auth().currentUser;
         if (user != null){

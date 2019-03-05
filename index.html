@@ -126,7 +126,8 @@
                     <div class="modal-body" style="padding-top:0rem;padding-bottom:0rem">
                         <div class="py-3 text-center">
                             <p style="background: black; padding: 10px; box-shadow: 1px 1px 10px #00000050;border-radius:5px;margin-top:10px;">
-                                <span id="server-error">Server alert/error response can go here. <br />Remember no alerts or prompts allowed!</span>
+                                <span id="server-error">Server alert/error response can go here. <br />Remember no
+                                    alerts or prompts allowed!</span>
                             </p>
                             <div class="main-div" id="login_div">
                                 <form role="form">
@@ -188,7 +189,8 @@
                                             <span class="toggle-switch-slider"></span>
                                         </label>
                                         <div style="padding-top:20px;">
-                                            <button type="button" class="btn btn-sm btn-secondary" id="input-bar-status">Update Bar Status</button>
+                                            <button type="button" class="btn btn-sm btn-secondary" id="input-bar-status">Update
+                                                Bar Status</button>
                                         </div>
                                     </div>
                                 </form>
@@ -216,6 +218,18 @@
                                         <div class="card-body px-md-3 py-3">
                                             <div class="text-center text-white">
                                                 <h6 class="h3 text-white">Map Module Begins</h6>
+                                                <form role="form">
+                                                    <div class="form-group">
+                                                        <label class="form-control-label text-white" style="float:left;">Enter Your Zip Code</label>
+                                                        <div class="input-group input-group-transparent">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text" style="background:white"><i
+                                                                        class="fas fa-beer"></i></span>
+                                                            </div>
+                                                            <input type="text" class="form-control" id="input-text"
+                                                                placeholder="BARID000-23">
+                                                        </div>
+                                                </form>
                                                 <div id="map-container" style="padding-top: 15%;padding-bottom:15%;background:#3e0e7b"></div>
                                                 <h6 class="h3 text-white" style="margin-bottom:0px;">Map Module Ends</h6>
                                             </div>
@@ -392,6 +406,8 @@
     <script src="./assets/js/map.js"></script>
     <!-- Custom JS -->
     <script src="./assets/js/custom.js"></script>
+    <!-- Custom JS -->
+    <script src="./assets/js/maps.js"></script>
     <!-- Firebase JS -->
     <script src="https://www.gstatic.com/firebasejs/5.8.5/firebase.js"></script>
     <!-- Login JS -->
