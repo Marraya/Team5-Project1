@@ -1,0 +1,90 @@
+
+* {
+    -webkit-box-sizing:border-box;
+    -moz-box-sizing:border-box;
+    box-sizing:border-box;
+  }
+
+  *:before, *:after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    }
+
+
+.container {
+    width: 80%;
+    position:absolute;
+    margin:auto;
+    left: 0;
+    right: 0;
+    top: 60px;
+    bottom: 0;
+} 
+
+.container.img5 .firstmug,
+.container.img5 .secondmug,
+.container.img5 .thirdmug,
+.container.img5 .fouthmug,
+.container.img5 .fithmug {
+    opacity: 1;
+    width: 10%; 
+}
+
+.container.img4 .firstmug,
+.container.img4 .secondmug,
+.container.img4 .thirdmug,
+.container.img4 .fouthmug {
+    opacity: 1;
+    width: 10%; 
+}
+
+.container.img3 .firstmug,
+.container.img3 .secondmug,
+.container.img3 .thirdmug {
+    opacity: 1;
+    width: 10%; 
+}
+.container.img2 .firstmug,
+.container.img2 .secondmug {
+    opacity: 1;
+    width: 10%; 
+}
+
+.container.img1 .firstmug {
+    opacity: 1;
+    width: 10%;
+}
+
+.blur {
+    opacity: .5;
+    width: 10%; 
+}
+
+.full {
+     opacity: 1;
+     width: 10%; 
+}
+
+.success-box {
+    margin:50px 0;
+    padding:10px 10px;
+    border:1px solid #eee;
+    background:#f9f9f9;
+  }
+  
+  .success-box img {
+    margin-right:10px;
+    display:inline-block;
+    vertical-align:top;
+  }
+  
+  .success-box > div {
+    vertical-align:top;
+    display:inline-block;
+    color:#888;
+  }
+
+ 
+
+
