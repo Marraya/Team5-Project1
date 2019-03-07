@@ -56,6 +56,10 @@
             <td>Wings:</td>
             <td><input type="number" name="food_wings" id="food_wings" required="required"/></td>
         </tr>
+        <tr>
+                <td>Image URL:</td>
+                <td><input type="url" name="activeImage" id="activeImage" /></td>
+            </tr>
 
         <td colspan="2">
             <input type="button" value="Save" onclick="save_user();"/>
@@ -86,7 +90,7 @@
         var databaseRef = firebase.database().ref('/restaurants/');
         var rowIndex = 1;
         // listening for event value change
-        databaseRef.once('value', function(snapshot) {
+        databaseRef.on('value', function(snapshot) {
          snapshot.forEach(function(childSnapshot) {
             var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
@@ -105,6 +109,7 @@
             var cellName5 = row.insertCell(5);
             var cellName6 = row.insertCell(6);
             var cellName7 = row.insertCell(7);
+            var cellName8 = row.insertCell(8);
             cellId.appendChild(document.createTextNode(childKey));
             cellName1.appendChild(document.createTextNode(childData.bar_name));
             cellName2.appendChild(document.createTextNode(childData.bar_location));
@@ -113,6 +118,7 @@
             cellName5.appendChild(document.createTextNode(childData.drinks_wine));
             cellName6.appendChild(document.createTextNode(childData.drinks_mix));
             cellName7.appendChild(document.createTextNode(childData.food_wings));
+            cellName8.appendChild(document.createTextNode(childData.activeImage));
 
             rowIndex = rowIndex + 1;   
             }  
@@ -128,6 +134,7 @@
         var drinks_wine = document.getElementById('drinks_wine').value;
         var drinks_mix = document.getElementById('drinks_mix').value;
         var food_wings = document.getElementById('food_wings').value;
+        var activeImage = document.getElementById('activeImage').value;
         var uid = firebase.database().ref().child('/restaurants/').push().key;
 
         var data = {
@@ -138,7 +145,8 @@
             drinks_beer: drinks_beer,
             drinks_wine: drinks_wine,
             drinks_mix: drinks_mix,
-            food_wings: food_wings
+            food_wings: food_wings,
+            activeImage: activeImage
         }
 
         var updates = {};
@@ -158,7 +166,10 @@
         var drinks_beer = document.getElementById('drinks_beer').value;
         var drinks_wine = document.getElementById('drinks_wine').value;
         var drinks_mix = document.getElementById('drinks_mix').value;
-        var food_wings = document.getElementById('food_wings').value;     
+        var food_wings = document.getElementById('food_wings').value; 
+        var activeImage = document.getElementById('activeImage').value;    
+        
+        
         // alert('user_id');
 
         var data = {
@@ -169,7 +180,8 @@
             drinks_beer: drinks_beer,
             drinks_wine: drinks_wine,
             drinks_mix: drinks_mix,
-            food_wings: food_wings
+            food_wings: food_wings,
+            activeImage: activeImage
         }
         // var updates = {};
         // updates['/restaurants/' + user_id] = data;
@@ -188,6 +200,7 @@
         var drinks_wine = document.getElementById('drinks_wine').value;
         var drinks_mix = document.getElementById('drinks_mix').value;
         var food_wings = document.getElementById('food_wings').value;
+        var activeImage = document.getElementById('activeImage').value;
         firebase.database().ref().child('/restaurants/' + user_id).remove();
         alert('The Restaurant Info has been deleted successfully');
         reload_page();

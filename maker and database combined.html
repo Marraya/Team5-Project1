@@ -24,10 +24,11 @@
   <script>
     var markers = [
       {
-        coords: { lat: 40.7549, lng: -73.9840 },
+        coords: { lat: 40.727661, lng: -73.990952 },
         iconImage: '',
         barName: "",
         barAddress: "",
+        barTime:"",
         beerPrice: "",
         winePrice: "",
         mixDrink: "",
@@ -36,10 +37,50 @@
         // content:'<p id="container1">test</p>'
       },
       {
-        coords: { lat: 40.7584, lng: -73.9957 },
+        coords: { lat: 40.756670, lng: -73.971420 },
         iconImage: '',
         barName: "",
         barAddress: "",
+        barTime:"",
+        beerPrice: "",
+        winePrice: "",
+        mixDrink: "",
+        foodPrice: "",
+
+        // content:'<p id="container1">test</p>'
+      },
+      {
+        coords: { lat: 40.754710, lng: -73.977270 },
+        iconImage: '',
+        barName: "",
+        barAddress: "",
+        barTime:"",
+        beerPrice: "",
+        winePrice: "",
+        mixDrink: "",
+        foodPrice: "",
+
+        // content:'<p id="container1">test</p>'
+      },
+      {
+        coords: { lat: 40.751862, lng: -73.971069 },
+        iconImage: '',
+        barName: "",
+        barAddress: "",
+        barTime:"",
+        beerPrice: "",
+        winePrice: "",
+        mixDrink: "",
+        foodPrice: "",
+
+        // content:'<p id="container1">test</p>'
+      },
+      {
+        coords: { lat: 40.761002, lng: -73.976990 },
+        iconImage: '',
+        barName: "",
+        barAddress: "",
+        barTime:"",
         beerPrice: "",
         winePrice: "",
         mixDrink: "",
@@ -62,23 +103,7 @@
         // Add marker
         addMarker({ coords: event.latLng });
       });
-      /*
-      // Add marker
-      var marker = new google.maps.Marker({
-        position:{lat:42.4668,lng:-70.9495},
-        map:map,
-        icon:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'
-      });
-      var infoWindow = new google.maps.InfoWindow({
-        content:'<h1>Lynn MA</h1>'
-      });
-      marker.addListener('click', function(){
-        infoWindow.open(map, marker);
-      });
-      */
-      // Array of markers
-
-      // Loop through markers
+      
       var config = {
         apiKey: "AIzaSyDc09T-OmJie6bBbWkx0FWsPT9Mk10ROp0",
         authDomain: "happy-hour-proje-1551302378847.firebaseapp.com",
@@ -101,7 +126,7 @@
               addMarker(markers[i]);
             }
       }
-      databaseRef.once('value', function (snapshot) {
+      databaseRef.on('value', function (snapshot) {
         snapshot.forEach(function (childSnapshot) {
           var childKey = childSnapshot.key;
           var childData = childSnapshot.val();
@@ -110,15 +135,57 @@
             markers[0].iconImage = (childData.activeImage);
             markers[0].barName = (childData.bar_name);
             markers[0].barAddress = (childData.bar_location); 
-            markers[0].barAddress = (childData.drinks_beer);
-            markers[0].barAddress = (childData.bar_location);
-            markers[0].barAddress = (childData.bar_location);
-            markers[0].barAddress = (childData.bar_location);
+            markers[0].barTime = (childData.closingTime);
+            markers[0].beerPrice = (childData.drinks_beer);
+            markers[0].winePrice = (childData.drinks_wine);
+            markers[0].mixDrink = (childData.drinks_mix);
+            markers[0].foodPrice = (childData.food_wings);
             displayMarkers();
+            console.log(markers[0].barTime,"markers[0].barTime");
+         
           }
           if (childData.user_id === "-L_AFq6YwV41N7p_Y18-") {
+             //markers[0].iconImage = (childData.activeImage);
             markers[1].barName = (childData.bar_name);
             markers[1].barAddress = (childData.bar_location);
+            markers[1].barTime = (childData.closingTime);
+            markers[1].beerPrice = (childData.drinks_beer);
+            markers[1].winePrice = (childData.drinks_wine);
+            markers[1].mixDrink = (childData.drinks_mix);
+            markers[1].foodPrice = (childData.food_wings);
+            displayMarkers();
+          }
+          if (childData.user_id === "-L_AFAPfSdyGTDHxxhEC") {
+            //markers[0].iconImage = (childData.activeImage);
+            markers[2].barName = (childData.bar_name);
+            markers[2].barAddress = (childData.bar_location);
+            markers[2].barTime = (childData.closingTime);
+            markers[2].beerPrice = (childData.drinks_beer);
+            markers[2].winePrice = (childData.drinks_wine);
+            markers[2].mixDrink = (childData.drinks_mix);
+            markers[2].foodPrice = (childData.food_wings);
+            displayMarkers();
+          }
+          if (childData.user_id === "-L_AG3K5wk3yYNob24kc") {
+            //markers[0].iconImage = (childData.activeImage);
+            markers[3].barName = (childData.bar_name);
+            markers[3].barAddress = (childData.bar_location);
+            markers[3].barTime = (childData.closingTime);
+            markers[3].beerPrice = (childData.drinks_beer);
+            markers[3].winePrice = (childData.drinks_wine);
+            markers[3].mixDrink = (childData.drinks_mix);
+            markers[3].foodPrice = (childData.food_wings);
+            displayMarkers();
+          }
+          if (childData.user_id === "-L_Kg2sF6dFfLVGOCyH2") {
+            //markers[4].iconImage = (childData.activeImage);
+            markers[4].barName = (childData.bar_name);
+            markers[4].barAddress = (childData.bar_location);
+            markers[4].barTime = (childData.closingTime);
+            markers[4].beerPrice = (childData.drinks_beer);
+            markers[4].winePrice = (childData.drinks_wine);
+            markers[4].mixDrink = (childData.drinks_mix);
+            markers[4].foodPrice = (childData.food_wings);
             displayMarkers();
           }
 
@@ -154,18 +221,20 @@
           marker.setIcon(props.iconImage);
         }
         // Check content
-
+    // databaseRef.on("child_changed", function(){
         if (props.barName) {
           console.log("props.barName", props.barName);
           var infoWindow = new google.maps.InfoWindow({
-            content: props.barName + props.barAddress + props.beerPrice,
-
-          });
+            content: "<h1>" + props.barName + "</h1>" + "<p>" + props.barAddress + "</p>" + "<p>" + props.barTime + "</p>" + "<p>Beer Price: $" + props.beerPrice + "</p>" + "<p>Wine Price: $" + props.winePrice + "</p>" +  "<p>Mix Drinks Price: $" + props.mixDrink + "</p>" + "<p>Wings Price: $" + props.foodPrice + "</p>"
+            });
+        
           marker.addListener('click', function () {
             infoWindow.open(map, marker);
           });
         }
-      }
+    // });
+      };
+    
     }
 
 
