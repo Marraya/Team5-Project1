@@ -32,8 +32,10 @@
             <td><input type="string" name="bar_location" id="bar_location" required="required"/></td>
         </tr>
         <tr>
-            <td>Closing Time:</td>
-            <td><input type="time" name="closingTime" id="closingTime" required="required"/></td>
+            <td>Start Time:</td>
+            <td><input type="time" name="startTime" id="startTime" required="required"/></td>
+            <td>End Time:</td>
+            <td><input type="time" name="endTime" id="endTime" required="required"/></td>
         </tr>
         <tr></tr><tr></tr>
         <tr> <td><strong>Menu</strong></td></tr>
@@ -74,7 +76,8 @@
             <td>#ID</td>
             <td>Bar Name</td>
             <td>Bar Location</td>
-            <td>Closing Time</td>
+            <td>Start Time</td>
+            <td>End Time</td>
             <td>Beers</td>
             <td>Wines</td>
             <td>Mix Drinks</td>
@@ -85,7 +88,7 @@
   
 <!-- <script src="database.js"> </script> -->
 <script>
-    localStorage.setItem('logged-in-user', "SMViKPVcOHb2VP7YIMp9DWS1dSx1");
+    // localStorage.setItem('logged-in-user', "SMViKPVcOHb2VP7YIMp9DWS1dSx1");
         var tblrestaurant = document.getElementById('tbl_restaurant_info');
         var databaseRef = firebase.database().ref('/restaurants/');
         var rowIndex = 1;
@@ -94,7 +97,8 @@
          snapshot.forEach(function(childSnapshot) {
             var childKey = childSnapshot.key;
             var childData = childSnapshot.val();
-            if (childData.owner_ID === localStorage.getItem('logged-in-user')) {
+            // if (childData.owner_ID === localStorage.getItem('logged-in-user')) 
+            {
                 console.log('only show this restauarnt');
                 console.log(childData)
             
@@ -110,15 +114,17 @@
             var cellName6 = row.insertCell(6);
             var cellName7 = row.insertCell(7);
             var cellName8 = row.insertCell(8);
+            var cellName9 = row.insertCell(9);
             cellId.appendChild(document.createTextNode(childKey));
             cellName1.appendChild(document.createTextNode(childData.bar_name));
             cellName2.appendChild(document.createTextNode(childData.bar_location));
-            cellName3.appendChild(document.createTextNode(childData.closingTime));
-            cellName4.appendChild(document.createTextNode(childData.drinks_beer));
-            cellName5.appendChild(document.createTextNode(childData.drinks_wine));
-            cellName6.appendChild(document.createTextNode(childData.drinks_mix));
-            cellName7.appendChild(document.createTextNode(childData.food_wings));
-            cellName8.appendChild(document.createTextNode(childData.activeImage));
+            cellName3.appendChild(document.createTextNode(childData.startTime));
+            cellName4.appendChild(document.createTextNode(childData.endTime));
+            cellName5.appendChild(document.createTextNode(childData.drinks_beer));
+            cellName6.appendChild(document.createTextNode(childData.drinks_wine));
+            cellName7.appendChild(document.createTextNode(childData.drinks_mix));
+            cellName8.appendChild(document.createTextNode(childData.food_wings));
+            cellName9.appendChild(document.createTextNode(childData.activeImage));
 
             rowIndex = rowIndex + 1;   
             }  
@@ -129,7 +135,8 @@
         // var user_id = document.getElementById('user_id').value;
         var bar_name = document.getElementById('bar_name').value;
         var bar_location = document.getElementById('bar_location').value;
-        var closingTime = document.getElementById('closingTime').value;
+        var startTime = document.getElementById('startTime').value;
+        var endTime = document.getElementById('endTime').value;
         var drinks_beer = document.getElementById('drinks_beer').value;
         var drinks_wine = document.getElementById('drinks_wine').value;
         var drinks_mix = document.getElementById('drinks_mix').value;
@@ -141,7 +148,8 @@
             user_id: uid,
             bar_name: bar_name,
             bar_location: bar_location,
-            closingTime: closingTime,
+            startTime: startTime,
+            endTime: endTime,
             drinks_beer: drinks_beer,
             drinks_wine: drinks_wine,
             drinks_mix: drinks_mix,
@@ -162,7 +170,8 @@
         var user_id = document.getElementById('user_id').value;
         var bar_name = document.getElementById('bar_name').value;
         var bar_location = document.getElementById('bar_location').value;
-        var closingTime = document.getElementById('closingTime').value;
+        var startTime = document.getElementById('startTime').value;
+        var endTime = document.getElementById('endTime').value;
         var drinks_beer = document.getElementById('drinks_beer').value;
         var drinks_wine = document.getElementById('drinks_wine').value;
         var drinks_mix = document.getElementById('drinks_mix').value;
@@ -176,7 +185,8 @@
             user_id: user_id,
             bar_name: bar_name,
             bar_location: bar_location,
-            closingTime: closingTime,
+            startTime: startTime,
+            endTime: endTime,
             drinks_beer: drinks_beer,
             drinks_wine: drinks_wine,
             drinks_mix: drinks_mix,
@@ -195,7 +205,8 @@
         var user_id = document.getElementById('user_id').value;
         var bar_name = document.getElementById('bar_name').value;
         var bar_location = document.getElementById('bar_location').value;
-        var closingTime = document.getElementById('closingTime').value;
+        var startTime = document.getElementById('startTime').value;
+        var endTime = document.getElementById('endTime').value;
         var drinks_beer = document.getElementById('drinks_beer').value;
         var drinks_wine = document.getElementById('drinks_wine').value;
         var drinks_mix = document.getElementById('drinks_mix').value;

@@ -7,7 +7,7 @@
 
 // });
 
-function initMap(){
+//function initMap(){
   // Empties Map div, grabs user input stores into a variable
       $("#map-search").on("click",function(){
           event.preventDefault
@@ -41,7 +41,7 @@ function initMap(){
                console.log(display)
       });
       });
-  }
+  //}
   //     || || || ||  initMap Call Back ----- Copy the whole link and put at the bottom of html file!!!!!!!!!!!!!!!!!!! || || || ||
   //     \/ \/ \/ \/                                                                                                    \/ \/ \/ \/
   // <script async defersrc="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzsfXudxbOJc1VXWKlJfSQelZB_Ywffyk&callback=initMap"></script>
