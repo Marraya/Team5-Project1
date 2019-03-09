@@ -222,41 +222,137 @@ var markers = [
           }  
           });
       });
-      function update_user(){
-      var user_id = document.getElementById('user_id').value;
-      var bar_name = document.getElementById('bar_name').value;
-      var bar_location = document.getElementById('bar_location').value;
-      var startTime = document.getElementById('startTime').value;
-      var endTime = document.getElementById('endTime').value;
-      var drinks_beer = document.getElementById('drinks_beer').value;
-      var drinks_wine = document.getElementById('drinks_wine').value;
-      var drinks_mix = document.getElementById('drinks_mix').value;
-      var food_wings = document.getElementById('food_wings').value; 
-      var activeImage = document.getElementById('activeImage').value;    
+
+      
+  //     function update_user(){
+  //     var user_id = document.getElementById('user_id').value;
+  //     var bar_name = document.getElementById('bar_name').value;
+  //     var bar_location = document.getElementById('bar_location').value;
+  //     var startTime = document.getElementById('startTime').value;
+  //     var endTime = document.getElementById('endTime').value;
+  //     var drinks_beer = document.getElementById('drinks_beer').value;
+  //     var drinks_wine = document.getElementById('drinks_wine').value;
+  //     var drinks_mix = document.getElementById('drinks_mix').value;
+  //     var food_wings = document.getElementById('food_wings').value; 
+  //     var activeImage = document.getElementById('activeImage').value;    
       
       
-      // alert('user_id');
+  //     // alert('user_id');
 
-      var data = {
-          user_id: user_id,
-          bar_name: bar_name,
-          bar_location: bar_location,
-          startTime: startTime,
-          endTime: endTime,
-          drinks_beer: drinks_beer,
-          drinks_wine: drinks_wine,
-          drinks_mix: drinks_mix,
-          food_wings: food_wings,
-          activeImage: activeImage
-      }
-      // var updates = {};
-      // updates['/restaurants/' + user_id] = data;
-      firebase.database().ref().child('/restaurants/' + user_id).update(data);
+  //     var data = {
+  //         user_id: user_id,
+  //         bar_name: bar_name,
+  //         bar_location: bar_location,
+  //         startTime: startTime,
+  //         endTime: endTime,
+  //         drinks_beer: drinks_beer,
+  //         drinks_wine: drinks_wine,
+  //         drinks_mix: drinks_mix,
+  //         food_wings: food_wings,
+  //         activeImage: activeImage
+  //     }
+  //     // var updates = {};
+  //     // updates['/restaurants/' + user_id] = data;
+  //     firebase.database().ref().child('/restaurants/' + user_id).update(data);
 
-      // alert('Updated successfully');
+  //     // alert('Updated successfully');
 
-      reload_page();
-  }
+  //     reload_page();
+  // }
+
+  function save_user(){
+    // var user_id = document.getElementById('user_id').value;
+    var bar_name = document.getElementById('bar_name').value;
+    var bar_location = document.getElementById('bar_location').value;
+    var startTime = document.getElementById('startTime').value;
+    var endTime = document.getElementById('endTime').value;
+    var drinks_beer = document.getElementById('drinks_beer').value;
+    var drinks_wine = document.getElementById('drinks_wine').value;
+    var drinks_mix = document.getElementById('drinks_mix').value;
+    var food_wings = document.getElementById('food_wings').value;
+    var activeImage = document.getElementById('activeImage').value;
+    var uid = firebase.database().ref().child('/restaurants/').push().key;
+    var data = {
+        user_id: uid,
+        bar_name: bar_name,
+        bar_location: bar_location,
+        startTime: startTime,
+        endTime: endTime,
+        drinks_beer: drinks_beer,
+        drinks_wine: drinks_wine,
+        drinks_mix: drinks_mix,
+        food_wings: food_wings,
+        activeImage: activeImage
+    }
+    var updates = {};
+    updates['/restaurants/' + uid] = data;
+    firebase.database().ref().update(updates);
+    alert('The Restaurant info has been created successfully');
+    reload_page();
+    
+}
+
+$('#user-update').click(function () {
+  update_user();
+});
+
+$('#user-save').click(function () {
+  save_user();
+});
+$('#user-delete').click(function () {
+  delete_user();
+});
+// 24.20 seconds
+function update_user(){
+    var user_id = document.getElementById('user_id').value;
+    var bar_name = document.getElementById('bar_name').value;
+    var bar_location = document.getElementById('bar_location').value;
+    var startTime = document.getElementById('startTime').value;
+    var endTime = document.getElementById('endTime').value;
+    var drinks_beer = document.getElementById('drinks_beer').value;
+    var drinks_wine = document.getElementById('drinks_wine').value;
+    var drinks_mix = document.getElementById('drinks_mix').value;
+    var food_wings = document.getElementById('food_wings').value; 
+    var activeImage = document.getElementById('activeImage').value;    
+    
+    
+    // alert('user_id');
+    var data = {
+        user_id: user_id,
+        bar_name: bar_name,
+        bar_location: bar_location,
+        startTime: startTime,
+        endTime: endTime,
+        drinks_beer: drinks_beer,
+        drinks_wine: drinks_wine,
+        drinks_mix: drinks_mix,
+        food_wings: food_wings,
+        activeImage: activeImage
+    }
+    // var updates = {};
+    // updates['/restaurants/' + user_id] = data;
+    firebase.database().ref().child('/restaurants/' + user_id).update(data);
+    alert('Updated successfully');
+    reload_page();
+}
+function delete_user(){
+    var user_id = document.getElementById('user_id').value;
+    var bar_name = document.getElementById('bar_name').value;
+    var bar_location = document.getElementById('bar_location').value;
+    var startTime = document.getElementById('startTime').value;
+    var endTime = document.getElementById('endTime').value;
+    var drinks_beer = document.getElementById('drinks_beer').value;
+    var drinks_wine = document.getElementById('drinks_wine').value;
+    var drinks_mix = document.getElementById('drinks_mix').value;
+    var food_wings = document.getElementById('food_wings').value;
+    var activeImage = document.getElementById('activeImage').value;
+    firebase.database().ref().child('/restaurants/' + user_id).remove();
+    alert('The Restaurant Info has been deleted successfully');
+    reload_page();
+    
+}
+function reload_page(){
+}
 
       function displayMarkers(){
           for (var i = 0; i < markers.length; i++) {

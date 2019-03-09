@@ -343,7 +343,7 @@ function updateHotBar() {
 
 
 
-$.getJSON("http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=10&callback=", function (a) {
+$.getJSON("https://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=10&callback=", function (a) {
 
     
     
